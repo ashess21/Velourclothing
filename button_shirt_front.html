@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velour | Button Shirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="logo">
+    <a href="index.html"><img src="images/velour_logo2.png" alt="Velour Logo"></a>
+  </div>
+
+  <div class="container">
+    <div class="image-slider">
+      <img id="productImage" src="images/button_shirt_front.png" alt="Velour Button Shirt">
+      <div class="arrow left" onclick="prevImage()">❮</div>
+      <div class="arrow right" onclick="nextImage()">❯</div>
+    </div>
+
+    <div class="details">
+      <h1 class="pop-hover">Velour Button Shirt</h1>
+      <div class="price">$70.00</div>
+
+      <div class="section">
+        <strong>Color:</strong> Blue Pinstripe
+        <div class="options"><span class="pop-hover">Blue</span></div>
+      </div>
+
+      <div class="section">
+        <strong>Size:</strong>
+        <div class="options">
+          <span class="pop-hover">S</span><span class="pop-hover">M</span><span class="pop-hover">L</span><span class="pop-hover">XL</span><span class="pop-hover">2XL</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <strong>Quantity:</strong>
+        <div class="quantity-control">
+          <button onclick="decreaseQty()">-</button>
+          <span id="qty">1</span>
+          <button onclick="increaseQty()">+</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <p>A breathable, relaxed-fit button-up shirt in blue pinstripe featuring the signature Velour logo on the back. Lightweight and stylish for summer wear.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const images = ["images/button_shirt_front.png", "images/button_shirt_back.png"];
+    let current = 0;
+
+    function showImage(index) {
+      document.getElementById('productImage').src = images[index];
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function increaseQty() {
+      let qty = document.getElementById("qty");
+      qty.innerText = parseInt(qty.innerText) + 1;
+    }
+
+    function decreaseQty() {
+      let qty = document.getElementById("qty");
+      let value = parseInt(qty.innerText);
+      if (value > 1) qty.innerText = value - 1;
+    }
+  </script>
+</body>
+</html>

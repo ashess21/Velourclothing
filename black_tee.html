@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velour | Black Tee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="images/velour_logo2.png" alt="Velour Logo">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/velour_logo1.png" alt="Velour Logo">
+    </a>
+  </div>
+
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+
+  <div class="catalog-layout">
+    <div class="sort-sidebar">
+      <a href="#" data-filter="all" class="active">ALL</a>
+      <a href="#" data-filter="JACKETS">JACKETS</a>
+      <a href="#" data-filter="T-SHIRTS">T-SHIRTS</a>
+      <a href="#" data-filter="TOPS">TOPS</a>
+      <a href="#" data-filter="BOTTOMS">BOTTOMS</a>
+      <a href="#" data-filter="SHORTS">SHORTS</a>
+      <a href="#" data-filter="HOODIES">HOODIES</a>
+      <a href="#" data-filter="HATS">HATS</a>
+      <a href="#" data-filter="ACCESSORIES">ACCESSORIES</a>
+    </div>
+
+    <div class="container">
+      <div class="image-slider">
+        <img id="productImage" src="images/black_tee_front.png" alt="Black Velour Tee">
+        <div class="arrow left" onclick="prevImage()">❮</div>
+        <div class="arrow right" onclick="nextImage()">❯</div>
+      </div>
+
+      <div class="details">
+        <h1>Black Velour Tee</h1>
+        <div class="price">$40.00</div>
+
+        <div class="section">
+          <strong>Color:</strong>
+          <select id="selectedColor">
+            <option value="Black">Black</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <strong>Size:</strong>
+          <select id="selectedSize">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="2XL">2XL</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <strong>Quantity:</strong>
+          <div class="quantity-control">
+            <button onclick="decreaseQty()">-</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+          </div>
+        </div>
+
+        <div class="section pop-hover">
+          <button onclick="addToCart()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Add to Cart</button>
+        </div>
+
+        <div class="product-description">
+          <p>
+            This black velour tee features a minimalist front and our signature back design. Cut for a relaxed fit from breathable heavyweight cotton.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

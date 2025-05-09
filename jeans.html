@@ -1,0 +1,85 @@
+<!-- Velour Jeans Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velour | Straight Jeans</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html"><img src="images/velour_logo2.png" alt="Velour Logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+  <div class="logo">
+    <a href="index.html"><img src="images/velour_logo1.png" alt="Velour Logo"></a>
+  </div>
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+  <div class="catalog-layout">
+    <div class="sort-sidebar"></div>
+    <div class="container">
+      <div class="image-slider">
+        <img id="productImage" src="images/jeans_front.png" alt="Velour Straight Jeans">
+        <div class="arrow left" onclick="prevImage()">❮</div>
+        <div class="arrow right" onclick="nextImage()">❯</div>
+      </div>
+      <div class="details">
+        <h1>Velour Straight Jeans</h1>
+        <div class="price">$70.00</div>
+        <div class="section">
+          <strong>Color:</strong>
+          <select id="selectedColor">
+            <option value="Indigo">Indigo</option>
+          </select>
+        </div>
+        <div class="section">
+          <strong>Size:</strong>
+          <select id="selectedSize">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+        <div class="section">
+          <strong>Quantity:</strong>
+          <div class="quantity-control">
+            <button onclick="decreaseQty()">-</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+          </div>
+        </div>
+        <div class="section pop-hover">
+          <button onclick="addToCart()">Add to Cart</button>
+        </div>
+        <div class="product-description">
+          <p>Straight-cut jeans with clean seams, a relaxed fit, and Velour woven label — a timeless essential.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const images = ["images/jeans_front.png"];
+    let currentImage = 0;
+    const productImage = document.getElementById("productImage");
+    function showImage(index) {
+      productImage.src = images[index];
+    }
+    function prevImage() {
+      currentImage = (currentImage - 1 + images.length) % images.length;
+      showImage(currentImage);
+    }
+    function nextImage() {
+      currentImage = (currentImage + 1) % images.length;
+      showImage(currentImage);
+    }
+  </script>
+  <script src="script.js" defer></script>
+</body>
+</html>

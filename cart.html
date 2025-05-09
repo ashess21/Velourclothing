@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velour | Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="images/velour_logo2.png" alt="Velour Logo">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/velour_logo1.png" alt="Velour Logo">
+    </a>
+  </div>
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+
+  <!-- PAGE TITLE -->
+  <div class="cart-text"><strong>Your Cart</strong></div>
+
+  <div class="catalog-layout">
+    <div class="sort-sidebar">
+      <a href="catalog.html" data-filter="all" class="active">ALL</a>
+      <a href="catalog.html" data-filter="JACKETS">JACKETS</a>
+      <a href="catalog.html" data-filter="T-SHIRTS">T-SHIRTS</a>
+      <a href="catalog.html" data-filter="TOPS">TOPS</a>
+      <a href="catalog.html" data-filter="BOTTOMS">BOTTOMS</a>
+      <a href="catalog.html" data-filter="SHORTS">SHORTS</a>
+      <a href="catalog.html" data-filter="HOODIES">HOODIES</a>
+      <a href="catalog.html" data-filter="HATS">HATS</a>
+      <a href="catalog.html" data-filter="ACCESSORIES">ACCESSORIES</a>
+    </div>
+
+    <!-- CART CONTENT + TOTAL SUMMARY-->
+    <div class="cart-container" id="cartContainer"></div>
+    <div class="cart-summary" id="cartSummary"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="delivery.html">Delivery Information</a>
+    <a href="faq.html">FAQs</a>
+    <a href="social.html">Socials</a>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+  <script>
+    loadCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velour | Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="images/velour_logo2.png" alt="Velour Logo">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/velour_logo1.png" alt="Velour Logo">
+    </a>
+  </div>
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+
+  <div class="checkout-wrapper">
+    <!-- Left: Form -->
+    <div class="checkout-left">
+      <div class="paypal-express">Pay with PayPal</div>
+      <div class="or-line">or</div>
+
+      <div>
+        <h2 class="section-title">Contact</h2>
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+
+      <div>
+        <h2 class="section-title">Shipping Address</h2>
+        <div class="form-grid">
+          <input type="text" id="firstName" placeholder="First Name" required>
+          <input type="text" id="lastName" placeholder="Last Name" required>
+          <input type="text" id="address" placeholder="Address" required>
+          <input type="text" id="apt" placeholder="Apt, Unit, etc. (Optional)">
+          <input type="text" id="city" placeholder="City" required>
+          <input type="text" id="state" placeholder="State" required>
+          <input type="text" id="zip" placeholder="ZIP Code" required>
+          <input type="text" id="phone" placeholder="Phone Number" required>
+        </div>
+        <label><input type="checkbox" id="saveInfo"> Save this information for next time</label>
+        <label><input type="checkbox" id="sameAsShipping" onchange="toggleBilling()"> Billing address same as shipping</label>
+      </div>
+
+      <div id="billingSection">
+        <h2 class="section-title">Billing Address</h2>
+        <div class="form-grid">
+          <input type="text" id="billName" placeholder="Full Name" required>
+          <input type="text" id="billAddress" placeholder="Street Address" required>
+          <input type="text" id="billCity" placeholder="City" required>
+          <input type="text" id="billState" placeholder="State" required>
+          <input type="text" id="billZip" placeholder="ZIP Code" required>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="section-title">Payment</h2>
+        <div class="form-grid">
+          <input type="text" id="cardNumber" placeholder="Card Number" required>
+          <input type="text" id="expiry" placeholder="Expiration Date (MM/YY)" required>
+          <input type="text" id="cvv" placeholder="Security Code" required>
+          <input type="text" id="cardName" placeholder="Name on Card" required>
+        </div>
+      </div>
+
+      <div class="checkout-btns">
+        <button class="cancel-btn" onclick="window.location.href='cart.html'">Cancel</button>
+        <button class="process-btn" onclick="placeOrder()">Process Payment</button>
+      </div>
+      <p style="font-size: 12px; text-align: center; margin-top: 20px;">
+        By completing your purchase you agree to our <a href="#">terms</a> and <a href="#">privacy</a> policies.
+      </p>
+    </div>
+
+    <!-- Right: Summary -->
+    <div class="checkout-right">
+      <div class="checkout-summary" id="checkoutCart">
+        <h3>Your Cart</h3>
+        <!-- JS from script.js will populate items here -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="delivery.html">Delivery Information</a>
+    <a href="faq.html">FAQs</a>
+    <a href="social.html">Socials</a>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    loadcart()
+  </script>
+</body>
+</html>

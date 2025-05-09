@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order History | Velour</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Order History</h1>
+  <button onclick="downloadPDF()">Download PDF</button>
+  <div id="orderHistoryContainer"></div>
+
+
+
+
+  
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    const container = document.getElementById("orderHistoryContainer");
+  
+    if (orders.length === 0) {
+      container.innerHTML = "<p>No orders found.</p>";
+    } else {
+        const downloadBtn = document.createElement("button");
+        downloadBtn.textContent = "Download Orders as CSV";
+        downloadBtn.style = "margin-bottom: 20px; padding: 10px 20px; font-weight: bold;";
+        downloadBtn.onclick = downloadCSV;
+        container.appendChild(downloadBtn);
+        
+        orders.forEach(order => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h3>${order.customer} (${order.date})</h3>`;
+            order.order.forEach(item => {
+                div.innerHTML += `<p>${item.name} - ${item.color}, ${item.size} × ${item.quantity}</p>`;
+            });
+            container.appendChild(div);
+        });
+    }
+    </script>
+    <script type="module">
+    import { jsPDF } from "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+    window.downloadPDF = async function() {
+        const { jsPDF } = await import("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+        const doc = new jsPDF();
+        
+        const orders = JSON.parse(localStorage.getItem("orderHistory")) || [];
+        let y = 10;
+        
+        if (orders.length === 0) {
+            doc.text("No orders found.", 10, y);
+        } else {
+            orders.forEach((order, index) => {
+                doc.setFontSize(12);
+                doc.text(`Order ${index + 1}: ${order.customer} (${order.date})`, 10, y);
+                y += 6;
+                
+                order.order.forEach(item => {
+                    const line = ` - ${item.name}, ${item.color}, ${item.size} x${item.quantity} - $${item.price}`;
+                    doc.text(line, 14, y);
+                    y += 6;
+                    if (y > 280) {
+                        doc.addPage();
+                        y = 10;
+                    }
+                });
+                 y += 4;
+                });
+            }
+            doc.save("Velour_Order_History.pdf");
+        }
+    </script>
+
+  
+</body>
+</html>

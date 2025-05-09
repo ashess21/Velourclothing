@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | Velour</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="images/velour_logo2.png" alt="Velour Logo">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/velour_logo1.png" alt="Velour Logo">
+    </a>
+  </div>
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+
+  <div class="confirmation-container">
+    <h1 id="thanksMsg">Thank You for Your Order!</h1>
+    <p id="emailMsg">You will receive a confirmation email shortly.</p>
+    <div id="orderSummary"></div>
+    <p>Need help? <a href="contact.html">Contact us</a></p>
+    <a href="index.html" class="home-btn">Return to Home</a>
+  </div>
+
+  <footer>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="delivery.html">Delivery Information</a>
+    <a href="faq.html">FAQs</a>
+    <a href="social.html">Socials</a>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const name = localStorage.getItem("customerName");
+      const email = localStorage.getItem("customerEmail");
+      const cart = JSON.parse(localStorage.getItem("confirmedOrder")) || [];
+
+      if (name) {
+        document.getElementById("thanksMsg").textContent = `Thank You, ${name}, for Your Order!`;
+      }
+
+      if (email) {
+        document.getElementById("emailMsg").textContent = `We will contact you with a confirmation email at: ${email}`;
+      }
+
+      const summary = document.getElementById("orderSummary");
+      if (cart.length > 0) {
+        cart.forEach(item => {
+          const div = document.createElement("div");
+          div.innerHTML = `<p><strong>${item.name}</strong> (${item.size}, ${item.color}) × ${item.quantity}</p>`;
+          summary.appendChild(div);
+        });
+      }
+
+      localStorage.removeItem("cart");
+    });
+  </script>
+</body>
+</html>

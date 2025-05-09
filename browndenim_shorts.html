@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velour | Brown Denim Shorts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Sigmar&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html">
+        <img src="images/velour_logo2.png" alt="Velour Logo">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-button">🛒 Cart</a>
+    </div>
+  </div>
+
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/velour_logo1.png" alt="Velour Logo">
+    </a>
+  </div>
+  <div class="datetime">05/01/2025 02:45pm PST</div>
+
+  <div class="catalog-layout">
+    <div class="sort-sidebar">
+      <a href="#" data-filter="all" class="active">ALL</a>
+      <a href="#" data-filter="JACKETS">JACKETS</a>
+      <a href="#" data-filter="T-SHIRTS">T-SHIRTS</a>
+      <a href="#" data-filter="TOPS">TOPS</a>
+      <a href="#" data-filter="BOTTOMS">BOTTOMS</a>
+      <a href="#" data-filter="SHORTS">SHORTS</a>
+      <a href="#" data-filter="HOODIES">HOODIES</a>
+      <a href="#" data-filter="HATS">HATS</a>
+      <a href="#" data-filter="ACCESSORIES">ACCESSORIES</a>
+    </div>
+
+    <div class="container">
+      <div class="image-slider">
+        <img id="productImage" src="images/browndenim_shorts_front.png" alt="Brown Denim Shorts">
+        <div class="arrow left" onclick="prevImage()">❮</div>
+        <div class="arrow right" onclick="nextImage()">❯</div>
+      </div>
+
+      <div class="details">
+        <h1>Brown Denim Shorts</h1>
+        <div class="price">$60.00</div>
+
+        <div class="section">
+          <strong>Color:</strong>
+          <select id="selectedColor">
+            <option value="Brown">Brown</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <strong>Size:</strong>
+          <select id="selectedSize">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="2XL">2XL</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <strong>Quantity:</strong>
+          <div class="quantity-control">
+            <button onclick="decreaseQty()">-</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+          </div>
+        </div>
+
+        <div class="section pop-hover">
+          <button onclick="addToCart()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Add to Cart</button>
+        </div>
+
+        <div class="product-description">
+          <p>
+            These brown denim shorts offer a rugged and relaxed style with a modern cut — perfect for streetwear or warm-weather layering.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const images = ["images/browndenim_shorts_front.png", "images/browndenim_shorts_back.png"];
+    let currentImageIndex = 0;
+
+    function updateImage() {
+      document.getElementById("productImage").src = images[currentImageIndex];
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      updateImage();
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      updateImage();
+    }
+
+    function increaseQty() {
+      const qty = document.getElementById("qty");
+      qty.innerText = parseInt(qty.innerText) + 1;
+    }
+
+    function decreaseQty() {
+      const qty = document.getElementById("qty");
+      if (parseInt(qty.innerText) > 1) {
+        qty.innerText = parseInt(qty.innerText) - 1;
+      }
+    }
+
+    function addToCart() {
+      alert("Item added to cart!");
+    }
+  </script>
+</body>
+</html>
